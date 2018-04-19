@@ -7,6 +7,7 @@
     "@types/react-dom": "16.0.4",
     "mobx": "4.1.0",
     "mobx-react": "5.0.0",
+    "npm-build-tools": "2.2.5",
     "react": "16.2.0",
     "react-dom": "16.2.0",
     "ts-loader": "4.1.0",
@@ -18,7 +19,10 @@
     "webpack-merge": "4.1.2"
   },
   "scripts": {
-    "prepack": "webpack-cli --config webpack.prod.js",
+    "bundle": "npm run -s bundle:android && npm run -s bundle:ios",
+    "bundle:android": "n-copy -d \"app/App.Platform.Android/Assets\" -s \"public\" \"app.*\"",
+    "bundle:ios": "n-copy -d \"app/App.Platform.iOS/Resources\" -s \"public\" \"app.*\"",
+    "prepack": "webpack-cli --config webpack.prod.js && npm run -s bundle",
     "start": "npm install --silent && webpack-dev-server --config webpack.dev.js"
   }
 }

@@ -1,6 +1,7 @@
 {
   "editor.tabSize": 2,
   "files.exclude": {
+    "app": true,
     "node_modules": true,
     "public/app.min.js": true,
     "public/app.min.js.map": true

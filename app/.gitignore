@@ -1,0 +1,7 @@
+*/*.csproj.user
+*/bin
+*/obj
+/.vs
+/App.Platform.Android/Assets/app.*
+/App.Platform.iOS/Resources/app.*
+/packages

@@ -17,4 +17,5 @@ class App extends React.Component<{vm: app.AppViewModel}> {
   let vm = new app.AppViewModel();
   mobx.configure({enforceActions: true});
   ReactDOM.render(<App vm={vm} />, document.getElementById('container'));
+  if (window.oni) window.oni.toNativeAsync('shell.hideSplashScreen');
 })();
