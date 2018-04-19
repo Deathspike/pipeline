@@ -14,7 +14,7 @@ namespace App.Platform.Android
     // TODO: Check if navigation error also arrives in OnConsoleMessage (error is a console message?).
     // TODO: Scaling issues.
     // TODO: Back button.
-    [Activity(Label = "App.Android", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.NoTitleBar")]
+    [Activity(Label = "@string/app_name", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.NoTitleBar")]
     public sealed class MainActivity : Activity
     {
         private Bridge _bridge;

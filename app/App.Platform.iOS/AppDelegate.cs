@@ -37,7 +37,6 @@ namespace App.Platform.iOS
             // Initialize the view.
             var viewUrl = new NSUrl(NSBundle.MainBundle.PathForResource("index", "html"), false);
             webView.LoadFileUrl(viewUrl, viewUrl);
-            webView.ScrollView.ScrollEnabled = false;
 
             // Initialize the splash screen.
             var launchScreen = NSBundle.MainBundle.LoadNib("LaunchScreen", null, null);
