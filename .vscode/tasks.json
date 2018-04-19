@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [{
+    "args": ["start"],
+    "command": "npm",
+    "group": {"kind": "build", "isDefault": true},
+    "isBackground": true,
+    "label": "Install & Serve",
+    "type": "shell",
+    "problemMatcher": {
+      "owner": "custom",
+      "pattern": {"regexp": "_"},
+      "background": {
+        "activeOnStart": false,
+        "beginsPattern": "^> Executing task:",
+        "endsPattern": "^i ｢wds｣: Project is running"
+      }
+    }
+  }]
+}
