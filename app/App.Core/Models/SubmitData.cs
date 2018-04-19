@@ -2,7 +2,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace App.Core.Bridge
+namespace App.Core.Models
 {
     public sealed class SubmitData
     {

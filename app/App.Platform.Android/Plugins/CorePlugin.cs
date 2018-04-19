@@ -1,5 +1,5 @@
 ﻿using Android.App;
-using App.Core;
+using App.Core.Plugins;
 
 namespace App.Platform.Android.Plugins
 {

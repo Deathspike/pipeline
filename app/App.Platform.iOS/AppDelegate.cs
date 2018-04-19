@@ -1,4 +1,4 @@
-﻿using App.Core.Bridge;
+﻿using App.Core;
 using App.Platform.iOS.Clients;
 using App.Platform.iOS.Plugins;
 using CoreGraphics;

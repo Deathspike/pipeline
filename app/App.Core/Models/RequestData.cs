@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace App.Core.Bridge
+namespace App.Core.Models
 {
     public sealed class RequestData
     {

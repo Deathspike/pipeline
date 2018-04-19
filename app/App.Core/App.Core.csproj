@@ -35,12 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Bridge\Bridge.cs" />
+    <Compile Include="Bridge.cs" />
     <Compile Include="Plugins\IShellPlugin.cs" />
     <Compile Include="Plugins\ICorePlugin.cs" />
-    <Compile Include="Bridge\Interfaces\IClient.cs" />
-    <Compile Include="Bridge\Models\RequestData.cs" />
-    <Compile Include="Bridge\Models\SubmitData.cs" />
+    <Compile Include="Interfaces\IClient.cs" />
+    <Compile Include="Models\RequestData.cs" />
+    <Compile Include="Models\SubmitData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

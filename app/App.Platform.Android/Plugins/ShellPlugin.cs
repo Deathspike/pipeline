@@ -1,6 +1,6 @@
 ﻿using Android.App;
 using Android.Views;
-using App.Core;
+using App.Core.Plugins;
 
 namespace App.Platform.Android.Plugins
 {

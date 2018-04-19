@@ -1,6 +1,6 @@
 ﻿using System;
 using Android.Webkit;
-using App.Core.Bridge;
+using App.Core;
 
 namespace App.Platform.Android.Clients
 {

@@ -1,4 +1,4 @@
-﻿namespace App.Core
+﻿namespace App.Core.Plugins
 {
     public interface ICorePlugin
     {

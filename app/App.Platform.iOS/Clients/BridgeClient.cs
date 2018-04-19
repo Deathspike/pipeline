@@ -1,4 +1,5 @@
-﻿using App.Core.Bridge;
+﻿using App.Core.Interfaces;
+using App.Core.Models;
 using WebKit;
 
 namespace App.Platform.iOS.Clients

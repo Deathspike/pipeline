@@ -1,5 +1,5 @@
 ﻿using System;
-using App.Core.Bridge;
+using App.Core;
 using WebKit;
 
 namespace App.Platform.iOS.Clients

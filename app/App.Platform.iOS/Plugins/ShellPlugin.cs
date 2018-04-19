@@ -1,4 +1,4 @@
-﻿using App.Core;
+﻿using App.Core.Plugins;
 using App.Platform.iOS.Clients;
 using UIKit;
 

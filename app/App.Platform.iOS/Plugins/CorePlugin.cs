@@ -1,4 +1,4 @@
-﻿using App.Core;
+﻿using App.Core.Plugins;
 
 namespace App.Platform.iOS.Plugins
 {

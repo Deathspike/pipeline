@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using App.Core.Interfaces;
+using App.Core.Models;
+using App.Core.Plugins;
 using Newtonsoft.Json;
 
-namespace App.Core.Bridge
+namespace App.Core
 {
     public sealed class Bridge
     {

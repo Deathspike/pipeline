@@ -1,4 +1,6 @@
-﻿namespace App.Core.Bridge
+﻿using App.Core.Models;
+
+namespace App.Core.Interfaces
 {
     public interface IClient
     {

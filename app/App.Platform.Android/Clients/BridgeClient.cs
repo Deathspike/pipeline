@@ -1,5 +1,6 @@
 using Android.Webkit;
-using App.Core.Bridge;
+using App.Core.Interfaces;
+using App.Core.Models;
 
 namespace App.Platform.Android.Clients
 {

@@ -4,7 +4,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Webkit;
-using App.Core.Bridge;
+using App.Core;
 using App.Platform.Android.Clients;
 using App.Platform.Android.Plugins;
 
