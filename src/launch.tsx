@@ -8,7 +8,14 @@ import * as ReactDOM from 'react-dom';
 class App extends React.Component<{vm: app.AppViewModel}> {
   render() {
     return (
-      <app.CounterView vm={this.props.vm.counter} />
+      <div>
+        <header>
+          Sunfish
+        </header>
+        <main>
+          <app.CounterView vm={this.props.vm.counter} />
+        </main>
+      </div>
     );
   }
 }

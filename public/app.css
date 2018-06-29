@@ -3,3 +3,31 @@ html, body {
   margin: 0;
   width: 100%;
 }
+
+header {
+  background-color: #000;
+  color: #FFF;
+  font-size: 1.5em;
+  line-height: 50px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+main {
+  bottom: 0;
+  position: absolute;
+  overflow: auto;
+  top: 50px;
+  width: 100%;
+}
+
+header {
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+}
+
+main {
+  margin-top: constant(safe-area-inset-top);
+  margin-top: env(safe-area-inset-top);
+}
