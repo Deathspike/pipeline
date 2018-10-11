@@ -22,6 +22,6 @@ class App extends React.Component<{vm: app.AppViewModel}> {
 
 (function() {
   let vm = new app.AppViewModel();
-  mobx.configure({enforceActions: true});
+  mobx.configure({enforceActions: 'always'});
   ReactDOM.render(<App vm={vm} />, document.getElementById('container'));
 })();
