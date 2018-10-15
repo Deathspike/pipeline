@@ -3,26 +3,22 @@
   "private": true,
   "version": "0.1.0",
   "devDependencies": {
-    "@types/react": "16.1.0",
-    "@types/react-dom": "16.0.4",
-    "mobx": "4.1.0",
-    "mobx-react": "5.0.0",
+    "@types/react": "16.4.16",
+    "@types/react-dom": "16.0.9",
+    "mobx": "5.5.0",
+    "mobx-react": "5.2.8",
     "npm-build-tools": "2.2.5",
-    "react": "16.2.0",
-    "react-dom": "16.2.0",
-    "ts-loader": "4.1.0",
-    "tslib": "1.9.0",
-    "typescript": "2.8.1",
-    "webpack": "4.3.0",
-    "webpack-cli": "2.0.13",
-    "webpack-dev-server": "3.1.1",
-    "webpack-merge": "4.1.2"
+    "typescript": "3.1.2",
+    "webpack": "4.20.2",
+    "webpack-cli": "3.1.2",
+    "webpack-dev-server": "3.1.9",
+    "webpack-merge": "4.1.4"
   },
   "scripts": {
     "bundle": "npm run -s bundle:android && npm run -s bundle:ios",
-    "bundle:android": "n-copy -d \"app/App.Platform.Android/Assets\" -s \"public\" \"app.*\"",
-    "bundle:ios": "n-copy -d \"app/App.Platform.iOS/Resources\" -s \"public\" \"app.*\"",
-    "prepack": "webpack-cli --config webpack.prod.js && npm run -s bundle",
-    "start": "npm install --silent && webpack-dev-server --config webpack.dev.js"
+    "bundle:android": "n-copy -d \"app/App.Platform.Android/Assets\" -s \"public\" \"app.*\" \"libs/**/*\"",
+    "bundle:ios": "n-copy -d \"app/App.Platform.iOS/Resources\" -s \"public\" \"app.*\" \"libs/**/*\"",
+    "prepack": "tsc && webpack-cli --config webpack.prod.js && npm run -s bundle",
+    "start": "n-run \"tsc --watch\" \"webpack-dev-server --config webpack.dev.js\""
   }
 }
