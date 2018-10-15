@@ -7,10 +7,7 @@
     "@types/react-dom": "16.0.9",
     "mobx": "5.5.0",
     "mobx-react": "5.2.8",
-    "react": "16.5.2",
-    "react-dom": "16.5.2",
-    "ts-loader": "5.2.1",
-    "tslib": "1.9.3",
+    "npm-build-tools": "2.2.5",
     "typescript": "3.1.2",
     "webpack": "4.20.2",
     "webpack-cli": "3.1.2",
@@ -18,7 +15,7 @@
     "webpack-merge": "4.1.4"
   },
   "scripts": {
-    "prepack": "webpack-cli --config webpack.prod.js",
-    "start": "npm install --silent && webpack-dev-server --config webpack.dev.js"
+    "prepack": "tsc && webpack-cli --config webpack.prod.js",
+    "start": "n-run \"tsc --watch\" \"webpack-dev-server --config webpack.dev.js\""
   }
 }

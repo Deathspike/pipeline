@@ -1,9 +1,3 @@
-import * as app from './';
-import * as mobx from 'mobx';
-import * as mobxReact from 'mobx-react';
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-
 @mobxReact.observer
 class App extends React.Component<{vm: app.AppViewModel}> {
   render() {
