@@ -50,13 +50,13 @@ namespace App.Platform.Android
         protected override void OnPause()
         {
             base.OnPause();
-            _bridge.UpdateActiveState(false);
+            _bridge.UpdateState(false);
         }
 
         protected override void OnResume()
         {
             base.OnResume();
-            _bridge.UpdateActiveState(true);
+            _bridge.UpdateState(true);
         }
 
         #endregion

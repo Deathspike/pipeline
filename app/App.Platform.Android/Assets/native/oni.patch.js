@@ -6,7 +6,7 @@
   console.warn = createFormatter(console.warn);
 
   function createFormatter(fn) {
-    return function () {
+    return function() {
       fn.call(this, format.apply(this, arguments));
     };
   }

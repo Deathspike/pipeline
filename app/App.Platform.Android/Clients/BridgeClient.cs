@@ -19,9 +19,9 @@ namespace App.Platform.Android.Clients
 
         #region Implementation of IClient
 
-        public void Submit(string functionName, SubmitData data)
+        public void Submit(string functionName, SubmitData submitData)
         {
-            _webView.Post(() => _webView.EvaluateJavascript($"{functionName}({data.InvokeData});", null));
+            _webView.Post(() => _webView.EvaluateJavascript($"{functionName}({submitData.InvokeData});", null));
         }
 
         #endregion

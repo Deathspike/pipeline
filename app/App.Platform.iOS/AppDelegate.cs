@@ -18,7 +18,7 @@ namespace App.Platform.iOS
 
         public override void DidEnterBackground(UIApplication application)
         {
-            _bridge.UpdateActiveState(false);
+            _bridge.UpdateState(false);
         }
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
@@ -53,7 +53,7 @@ namespace App.Platform.iOS
 
         public override void OnActivated(UIApplication application)
         {
-            _bridge.UpdateActiveState(true);
+            _bridge.UpdateState(true);
         }
         
         public override UIWindow Window

@@ -4,6 +4,6 @@ namespace App.Core.Interfaces
 {
     public interface IClient
     {
-        void Submit(string functionName, SubmitData data);
+        void Submit(string functionName, SubmitData submitData);
     }
 }

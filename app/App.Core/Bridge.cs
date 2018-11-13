@@ -14,7 +14,7 @@ namespace App.Core
     {
         private readonly IClient _client;
         private readonly ICorePlugin _corePlugin;
-        private readonly SortedDictionary<string, SortedDictionary<object, bool>> _queue;
+        private readonly List<KeyValuePair<string, object>> _queue;
         private bool _isActive;
 
         #region Abstracts
@@ -23,90 +23,62 @@ namespace App.Core
         {
             while (_queue.Count != 0)
             {
-                var list = _queue.First();
-
-                foreach (var item in list.Value)
-                {
-                    SendOrQueue(item.Value, list.Key, item.Key);
-                }
-
-                _queue.Remove(list.Key);
+                DispatchEvent(_queue[0].Key, _queue[0].Value);
+                _queue.RemoveAt(0);
             }
         }
 
         private object ProcessRequest(RequestData requestData)
         {
-            var pieceList = requestData.EventName.ToLowerInvariant().Split('.').ToList();
+            var pieces = requestData.EventName.ToLowerInvariant().Split('.').ToList();
             var source = _corePlugin as object;
 
-            while (pieceList.Count > 1)
+            while (pieces.Count > 1)
             {
-                var pi = source.GetType().GetRuntimeProperties().FirstOrDefault(x => x.Name.ToLower() == pieceList[0]);
+                var pi = source.GetType().GetRuntimeProperties().FirstOrDefault(x => x.Name.ToLower() == pieces[0]);
                 if (pi == null) break;
                 source = pi.GetValue(source);
-                pieceList.RemoveAt(0);
+                pieces.RemoveAt(0);
             }
 
-            while (pieceList.Count == 1)
+            while (pieces.Count == 1)
             {
-                var mi = source.GetType().GetRuntimeMethods().FirstOrDefault(x => x.Name.ToLower() == pieceList[0]);
+                var mi = source.GetType().GetRuntimeMethods().FirstOrDefault(x => x.Name.ToLower() == pieces[0]);
                 if (mi == null) break;
                 var pi = mi.GetParameters();
                 return mi.Invoke(source, pi.Length != 0 ? new[] {requestData.Value.ToObject(pi[0].ParameterType)} : null);
             }
 
-            throw new Exception("Unknown event source");
+            throw new Exception($"Unknown event name: {requestData.EventName}");
         }
 
         private void ProcessResponse(RequestData requestData, object response)
         {
-            if (response is Task task)
-            {
-                task.ContinueWith(x =>
-                {
-                    if (x.IsFaulted)
-                    {
-                        _client.Submit(requestData.CallbackName, new SubmitData(false, string.Join(
-                            Environment.NewLine,
-                            x.Exception.InnerExceptions.Select(y => y.Message))));
-                    }
-                    else if (x.GetType().IsConstructedGenericType)
-                    {
-                        _client.Submit(requestData.CallbackName, new SubmitData(true, x.GetType()
-                            .GetRuntimeProperty(nameof(Task<object>.Result))
-                            .GetValue(x)));
-                    }
-                    else
-                    {
-                        _client.Submit(requestData.CallbackName, new SubmitData(true));
-                    }
-                });
-            }
-            else
+            if (!(response is Task task))
             {
                 _client.Submit(requestData.CallbackName, new SubmitData(true, response));
+                return;
             }
-        }
 
-        private void SendOrQueue(bool isExclusive, string eventName, object value)
-        {
-            if (_isActive)
+            task.ContinueWith(x =>
             {
-                _client.Submit("oni.fromNative", new SubmitData(eventName, value));
-            }
-            else if (!_queue.TryGetValue(eventName, out var values))
-            {
-                _queue[eventName] = new SortedDictionary<object, bool> {{value, isExclusive}};
-            }
-            else if (!isExclusive)
-            {
-                values.Add(value, false);
-            }
-            else
-            {
-                values.Clear();
-                values.Add(value, true);
-            }
+                if (x.IsFaulted)
+                {
+                    _client.Submit(requestData.CallbackName, new SubmitData(false, string.Join(
+                        Environment.NewLine,
+                        x.Exception.InnerExceptions.Select(y => y.Message))));
+                }
+                else if (x.GetType().IsConstructedGenericType)
+                {
+                    _client.Submit(requestData.CallbackName, new SubmitData(true, x.GetType()
+                        .GetRuntimeProperty(nameof(Task<object>.Result))
+                        .GetValue(x)));
+                }
+                else
+                {
+                    _client.Submit(requestData.CallbackName, new SubmitData(true));
+                }
+            });
         }
 
         #endregion
@@ -117,12 +89,24 @@ namespace App.Core
         {
             _client = client;
             _corePlugin = corePlugin;
-            _queue = new SortedDictionary<string, SortedDictionary<object, bool>>();
+            _queue = new List<KeyValuePair<string, object>>();
         }
 
         #endregion
 
         #region Methods
+
+        public void DispatchEvent(string eventName, object value = null)
+        {
+            if (_isActive)
+            {
+                _client.Submit("oni.dispatchEvent", new SubmitData(eventName, value));
+            }
+            else
+            {
+                _queue.Add(new KeyValuePair<string, object>(eventName, value));
+            }
+        }
 
         public void ProcessRequest(string json)
         {
@@ -143,20 +127,19 @@ namespace App.Core
             }
         }
 
-        public void SubmitEvent(string eventName, object value = null)
+        public void UpdateState(bool isActive)
         {
-            SendOrQueue(false, eventName, value);
-        }
-
-        public void SubmitExclusiveEvent(string eventName, object value = null)
-        {
-            SendOrQueue(true, eventName, value);
-        }
-
-        public void UpdateActiveState(bool isActive)
-        {
-            _isActive = isActive;
-            if (_isActive) EmptyQueue();
+            if (isActive)
+            {
+                _isActive = true;
+                EmptyQueue();
+                DispatchEvent("focus");
+            }
+            else
+            {
+                DispatchEvent("blur");
+                _isActive = false;
+            }
         }
 
         #endregion

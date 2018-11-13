@@ -1,26 +1,33 @@
 var oni = (function() {
-  var handlers = {};
-  var lastId = 0;
+  var eventHandlers = {};
+  var previousId = 0;
 
   return {
-    on: function(eventName, handler) {
-      if (handlers[eventName]) {
-        handlers[eventName].push(handler);
+    addEventListener: function(eventName, handler) {
+      if (eventHandlers[eventName]) {
+        eventHandlers[eventName].push(handler);
       } else {
-        handlers[eventName] = [handler];
+        eventHandlers[eventName] = [handler];
       }
     },
 
-    fromNative: function(eventName, value) {
-      if (handlers[eventName]) {
-        for (var i = 0; i < handlers[eventName].length; i += 1) {
-          handlers[eventName][i](value);
+    dispatchEvent: function(eventName, value) {
+      if (eventHandlers[eventName]) {
+        for (var i = 0; i < eventHandlers[eventName].length; i++) {
+          eventHandlers[eventName][i](value);
         }
       }
     },
 
-    toNativeAsync: function(eventName, value) {
-      var callbackId = lastId++;
+    removeEventListener: function(eventName, handler) {
+      if (eventHandlers[eventName]) {
+        var index = eventHandlers[eventName].indexOf(handler);
+        if (index !== -1) eventHandlers[eventName].splice(index, 1);
+      }
+    },
+
+    sendAsync: function(eventName, value) {
+      var callbackId = previousId++;
       var callbackName = "onicb_" + callbackId;
       return new Promise(function(resolve, reject) {
         window[callbackName] = function(success, result) {
