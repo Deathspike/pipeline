@@ -123,7 +123,7 @@ namespace App.Core
             }
             finally
             {
-                if (response != null) ProcessResponse(requestData, response);
+                ProcessResponse(requestData, response);
             }
         }
 
