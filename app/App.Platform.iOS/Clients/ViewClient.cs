@@ -5,11 +5,11 @@ using WebKit;
 
 namespace App.Platform.iOS.Clients
 {
-    public sealed class ViewClient : UIViewController, IWKUIDelegate
+    public sealed class ViewClient : UIViewController, IWKNavigationDelegate, IWKUIDelegate
     {
         private readonly WKWebView _webView;
         private UIStatusBarStyle _statusBarStyle;
-  
+
         #region Constructor
 
         public ViewClient(WKWebView webView)
@@ -36,6 +36,7 @@ namespace App.Platform.iOS.Clients
 
         public override void LoadView()
         {
+            _webView.NavigationDelegate = this;
             _webView.UIDelegate = this;
             View = _webView;
         }
@@ -43,6 +44,24 @@ namespace App.Platform.iOS.Clients
         public override UIStatusBarStyle PreferredStatusBarStyle()
         {
             return _statusBarStyle;
+        }
+
+        #endregion
+
+        #region Implementation of IWKNavigationDelegate
+
+        [Export("webView:decidePolicyForNavigationAction:decisionHandler:")]
+        public void DecidePolicy(WKWebView webView, WKNavigationAction navigationAction, Action<WKNavigationActionPolicy> decisionHandler)
+        {
+            if (UIApplication.SharedApplication.CanOpenUrl(navigationAction.Request.Url))
+            {
+                UIApplication.SharedApplication.OpenUrl(navigationAction.Request.Url);
+                decisionHandler(WKNavigationActionPolicy.Cancel);
+            }
+            else
+            {
+                decisionHandler(WKNavigationActionPolicy.Allow);
+            }
         }
 
         #endregion
