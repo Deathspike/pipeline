@@ -36,7 +36,7 @@ namespace App.Platform.Android
             _webView.Settings.DomStorageEnabled = true;
             _webView.Settings.JavaScriptEnabled = true;
             _webView.SetWebChromeClient(new ChromeClient(_bridge));
-            _webView.SetWebViewClient(new WebClient());
+            _webView.SetWebViewClient(new WebClient(this));
             _webView.LoadUrl("file:///android_asset/index.html");
         }
 
