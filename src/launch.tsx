@@ -3,12 +3,15 @@ class App extends React.Component<{vm: app.AppViewModel}> {
   render() {
     return (
       <div>
-        <header>
+        <header className="ios-inset-top">
           Sunfish
         </header>
-        <main>
+        <main className="ios-inset-top ios-inset-bottom">
           <app.CounterView vm={this.props.vm.counter} />
         </main>
+        <footer className="ios-inset-bottom">
+          Footer
+        </footer>
       </div>
     );
   }
