@@ -108,5 +108,17 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\LaunchScreen.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\libs\mobx-5.5.0.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\libs\mobx-react-5.2.8.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\libs\react-16.5.2.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\libs\react-dom-16.5.2.min.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
