@@ -10,7 +10,6 @@ body {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   overflow-y: scroll;
-  touch-action: none;
 }
 
 .ios-inset-top {
