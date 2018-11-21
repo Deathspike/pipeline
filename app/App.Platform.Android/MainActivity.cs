@@ -13,7 +13,6 @@ namespace App.Platform.Android
     // TODO: Handle logs and errors.
     // TODO: Check if navigation error also arrives in OnConsoleMessage (error is a console message?).
     // TODO: Scaling issues.
-    // TODO: Back button.
     [Activity(Label = "@string/app_name", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.NoTitleBar")]
     public sealed class MainActivity : Activity
     {
@@ -26,13 +25,15 @@ namespace App.Platform.Android
         {
             // Initialize the component.
             base.OnCreate(savedInstanceState);
+            WebView.SetWebContentsDebuggingEnabled(true);
 
             // Initialize the content.
             SetContentView(Resource.Layout.Main);
             _webView = FindViewById<WebView>(Resource.Id.webView);
             _bridge = new Bridge(new BridgeClient(_webView), new CorePlugin(this));
-            
+
             // Initialize the view.
+            _webView.OverScrollMode = OverScrollMode.Never;
             _webView.Settings.DomStorageEnabled = true;
             _webView.Settings.JavaScriptEnabled = true;
             _webView.SetWebChromeClient(new ChromeClient(_bridge));
@@ -46,7 +47,7 @@ namespace App.Platform.Android
             _webView.GoBack();
             return true;
         }
-        
+
         protected override void OnPause()
         {
             base.OnPause();
