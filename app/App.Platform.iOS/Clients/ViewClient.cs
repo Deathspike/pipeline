@@ -34,16 +34,17 @@ namespace App.Platform.iOS.Clients
 
         #region Overrides of UIViewController
 
-        public override void LoadView()
-        {
-            _webView.NavigationDelegate = this;
-            _webView.UIDelegate = this;
-            View = _webView;
-        }
-
         public override UIStatusBarStyle PreferredStatusBarStyle()
         {
             return _statusBarStyle;
+        }
+
+        public override void ViewDidAppear(bool animated)
+        {
+            var fileUrl = new NSUrl(NSBundle.MainBundle.PathForResource("index", "html"), false);
+            _webView.NavigationDelegate = this;
+            _webView.UIDelegate = this;
+            _webView.LoadFileUrl(fileUrl, fileUrl);
         }
 
         #endregion

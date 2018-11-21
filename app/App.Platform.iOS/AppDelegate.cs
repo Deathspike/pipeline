@@ -1,7 +1,6 @@
 ﻿using App.Core;
 using App.Platform.iOS.Clients;
 using App.Platform.iOS.Plugins;
-using CoreGraphics;
 using Foundation;
 using UIKit;
 using WebKit;
@@ -24,28 +23,25 @@ namespace App.Platform.iOS
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
             // Initialize the content controller.
-            var userContentController = new WKUserContentController();
-            var userContentMessageHandler = new WebClient();
-            userContentController.AddScriptMessageHandler(userContentMessageHandler, "native");
+            var bounds = UIScreen.MainScreen.Bounds;
+            var contentController = new WKUserContentController();
+            var contentMessageHandler = new WebClient();
+            contentController.AddScriptMessageHandler(contentMessageHandler, "native");
 
             // Initialize the content.
-            var webViewConfig = new WKWebViewConfiguration {UserContentController = userContentController};
-            var webView = new WKWebView(UIScreen.MainScreen.Bounds, webViewConfig);
-            _bridge = new Bridge(new BridgeClient(webView), new CorePlugin());
-            userContentMessageHandler.UseBridge(_bridge);
-
-            // Initialize the view.
-            var viewUrl = new NSUrl(NSBundle.MainBundle.PathForResource("index", "html"), false);
-            webView.LoadFileUrl(viewUrl, viewUrl);
-
-            // Initialize the splash screen.
+            var webView = new WKWebView(bounds, new WKWebViewConfiguration {UserContentController = contentController});
+            var view = new ViewClient(webView);
+            _bridge = new Bridge(new BridgeClient(webView), new CorePlugin(view));
+            contentMessageHandler.UseBridge(_bridge);
+            
+            // Initialize the view splash screen.
             var launchScreen = NSBundle.MainBundle.LoadNib("LaunchScreen", null, null);
             var launchView = launchScreen.GetItem<UIView>(0);
-            launchView.Frame = new CGRect(0, -application.StatusBarFrame.Height, UIScreen.MainScreen.Bounds.Width, UIScreen.MainScreen.Bounds.Height + application.StatusBarFrame.Height);
+            launchView.Frame = bounds;
 
             // Initialize the window.
-            Window = new UIWindow(new CGRect(0, application.StatusBarFrame.Height, UIScreen.MainScreen.Bounds.Width, UIScreen.MainScreen.Bounds.Height - application.StatusBarFrame.Height));
-            Window.RootViewController = new ViewClient(webView);
+            Window = new UIWindow(bounds) {RootViewController = view};
+            Window.RootViewController.View = webView;
             Window.RootViewController.View.AddSubview(launchView);
             Window.MakeKeyAndVisible();
             return true;

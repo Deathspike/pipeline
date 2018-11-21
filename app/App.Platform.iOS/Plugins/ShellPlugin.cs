@@ -1,16 +1,26 @@
 ﻿using App.Core.Plugins;
 using App.Platform.iOS.Clients;
-using UIKit;
 
 namespace App.Platform.iOS.Plugins
 {
     public sealed class ShellPlugin : IShellPlugin
     {
+        private readonly ViewClient _view;
+
+        #region Constructor
+
+        public ShellPlugin(ViewClient view)
+        {
+            _view = view;
+        }
+
+        #endregion
+
         #region Implementation of IShellPlugin
 
         public void HideSplashScreen()
         {
-            (UIApplication.SharedApplication.KeyWindow.RootViewController as ViewClient)?.HideSplashScreen();
+            _view.HideSplashScreen();
         }
 
         #endregion

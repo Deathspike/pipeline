@@ -1,4 +1,5 @@
 ﻿using App.Core.Plugins;
+using App.Platform.iOS.Clients;
 
 namespace App.Platform.iOS.Plugins
 {
@@ -6,9 +7,9 @@ namespace App.Platform.iOS.Plugins
     {
         #region Constructor
 
-        public CorePlugin()
+        public CorePlugin(ViewClient view)
         {
-            Shell = new ShellPlugin();
+            Shell = new ShellPlugin(view);
         }
 
         #endregion
