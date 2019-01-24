@@ -32,8 +32,11 @@ namespace App.Platform.iOS
             var webView = new WKWebView(bounds, new WKWebViewConfiguration {UserContentController = contentController});
             var view = new ViewClient(webView);
             _bridge = new Bridge(new BridgeClient(webView), new CorePlugin(view));
+
+            // Initialize the content configuration.
             contentMessageHandler.UseBridge(_bridge);
-            
+            webView.ScrollView.ContentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.Never;
+
             // Initialize the view splash screen.
             var launchScreen = NSBundle.MainBundle.LoadNib("LaunchScreen", null, null);
             var launchView = launchScreen.GetItem<UIView>(0);
@@ -51,7 +54,7 @@ namespace App.Platform.iOS
         {
             _bridge.UpdateState(true);
         }
-        
+
         public override UIWindow Window
         {
             get;
