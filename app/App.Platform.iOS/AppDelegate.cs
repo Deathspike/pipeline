@@ -36,6 +36,8 @@ namespace App.Platform.iOS
             // Initialize the content configuration.
             contentMessageHandler.UseBridge(_bridge);
             webView.ScrollView.ContentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.Never;
+            webView.ScrollView.ShowsHorizontalScrollIndicator = false;
+            webView.ScrollView.ShowsVerticalScrollIndicator = false;
 
             // Initialize the view splash screen.
             var launchScreen = NSBundle.MainBundle.LoadNib("LaunchScreen", null, null);
@@ -54,7 +56,7 @@ namespace App.Platform.iOS
         {
             _bridge.UpdateState(true);
         }
-
+        
         public override UIWindow Window
         {
             get;
