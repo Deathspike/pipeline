@@ -34,6 +34,8 @@ namespace App.Platform.Android
 
             // Initialize the view.
             _webView.OverScrollMode = OverScrollMode.Never;
+            _webView.HorizontalScrollBarEnabled = false;
+            _webView.VerticalScrollBarEnabled = false;
             _webView.Settings.DomStorageEnabled = true;
             _webView.Settings.JavaScriptEnabled = true;
             _webView.SetWebChromeClient(new ChromeClient(_bridge));
@@ -47,7 +49,7 @@ namespace App.Platform.Android
             _webView.GoBack();
             return true;
         }
-
+        
         protected override void OnPause()
         {
             base.OnPause();
