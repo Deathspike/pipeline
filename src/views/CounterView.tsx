@@ -30,6 +30,6 @@ const styles = app.styles({
     textAlign: 'right'
   },
   button: {
-    marginLeft: app.theme.spacing.unit
+    marginRight: app.theme.spacing.unit
   }
 });
