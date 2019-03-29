@@ -1,5 +1,8 @@
 import './boot';
-export * from './viewModels/AppViewModel';
-export * from './viewModels/CounterViewModel';
+export * from './common/styles';
+export * from './common/theme';
+export * from './components/HeaderComponent';
+export * from './languages/counterLanguage';
+export * from './models/CounterViewModel';
 export * from './views/CounterView';
 import './launch';

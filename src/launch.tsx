@@ -1,24 +1,27 @@
 @mobxReact.observer
-class App extends React.Component<{vm: app.AppViewModel}> {
+class App extends React.Component {
   render() {
     return (
-      <div>
-        <header className="ios-inset-top">
-          Sunfish
-        </header>
-        <main className="ios-inset-top ios-inset-bottom">
-          <app.CounterView vm={this.props.vm.counter} />
-        </main>
-        <footer className="ios-inset-bottom">
-          Footer
-        </footer>
-      </div>
+      <mui.MuiThemeProvider theme={app.theme}>
+        <mui.CssBaseline />
+        <Builder />
+      </mui.MuiThemeProvider>
+    );
+  }
+}
+
+@mobxReact.observer
+class Builder extends React.Component {
+  render() {
+    return (
+      <app.HeaderComponent title={document.title}>
+        <app.CounterView vm={new app.CounterViewModel()} />
+      </app.HeaderComponent>
     );
   }
 }
 
 (function() {
-  let vm = new app.AppViewModel();
-  mobx.configure({enforceActions: 'always'});
-  ReactDOM.render(<App vm={vm} />, document.getElementById('container'));
+  mobx.configure({enforceActions: 'observed'});
+  ReactDOM.render(<App />, document.getElementById('container'));
 })();
