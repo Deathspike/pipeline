@@ -1,3 +1,7 @@
+import * as app from '..';
+import * as mui from '@material-ui/core';
+import * as React from 'react';
+
 export class HeaderComponent extends React.Component<{title: string}> {
   render() {
     return (
