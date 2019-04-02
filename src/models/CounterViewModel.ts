@@ -1,3 +1,5 @@
+import * as mobx from 'mobx';
+
 export class CounterViewModel {
   @mobx.action
   decrement() {

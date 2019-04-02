@@ -1,3 +1,8 @@
+import * as app from '..';
+import * as mobxReact from 'mobx-react';
+import * as mui from '@material-ui/core';
+import * as React from 'react';
+
 @mobxReact.observer
 export class CounterView extends React.Component<{vm: app.CounterViewModel}> {
   render() {
@@ -10,9 +15,11 @@ export class CounterView extends React.Component<{vm: app.CounterViewModel}> {
         </mui.Paper>
         <mui.Grid style={styles.buttonContainer}>
           <mui.Button color="primary" variant="contained" style={styles.button} onClick={() => this.props.vm.increment()}>
+            <app.icons.Add style={styles.buttonIcon} />
             {app.counterLanguage.incrementButton}
           </mui.Button>
           <mui.Button color="primary" variant="contained" style={styles.button} onClick={() => this.props.vm.decrement()}>
+            <app.icons.Remove style={styles.buttonIcon} />
             {app.counterLanguage.decrementButton}
           </mui.Button>
         </mui.Grid>
@@ -27,9 +34,12 @@ const styles = app.styles({
   },
   buttonContainer: {
     marginTop: app.theme.spacing.unit,
-    textAlign: 'right'
+    textAlign: 'center'
   },
   button: {
+    marginRight: app.theme.spacing.unit
+  },
+  buttonIcon: {
     marginRight: app.theme.spacing.unit
   }
 });
