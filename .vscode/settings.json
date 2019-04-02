@@ -4,7 +4,6 @@
   "files.exclude": {
     "dist": true,
     "node_modules": true,
-    "public/app.min.js": true,
-    "public/app.min.js.map": true
+    "public/app.min.js": true
   }
 }
