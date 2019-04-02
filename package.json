@@ -3,13 +3,17 @@
   "main": "src",
   "private": true,
   "version": "0.1.0",
-  "devDependencies": {
+  "dependencies": {
     "@material-ui/core": "3.2.0",
     "@material-ui/icons": "3.0.1",
-    "@types/react": "16.4.16",
-    "@types/react-dom": "16.0.9",
     "mobx": "5.5.0",
     "mobx-react": "5.2.8",
+    "react": "16.5.2",
+    "react-dom": "16.5.2"
+  },
+  "devDependencies": {
+    "@types/react": "16.4.16",
+    "@types/react-dom": "16.0.9",
     "npm-build-tools": "2.2.5",
     "typescript": "3.1.2",
     "webpack": "4.20.2",

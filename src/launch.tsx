@@ -1,3 +1,10 @@
+import * as app from '.';
+import * as mobx from 'mobx';
+import * as mobxReact from 'mobx-react';
+import * as mui from '@material-ui/core';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+
 @mobxReact.observer
 class App extends React.Component {
   render() {
