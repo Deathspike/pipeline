@@ -1,8 +1,8 @@
-/.vscode
-/app
-/dist
-/src
-/typings
+/.vscode/*
+/app/*
+/dist/*
+/src/*
+/typings/*
 /*.js
 /*.json
 /*.tgz
