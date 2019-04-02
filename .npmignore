@@ -1,6 +1,6 @@
-/.vscode
-/dist
-/src
+/.vscode/*
+/dist/*
+/src/*
 /*.js
 /*.json
 /*.tgz
