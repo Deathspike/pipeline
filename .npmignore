@@ -2,6 +2,7 @@
 /app
 /dist
 /src
+/typings
 /*.js
 /*.json
 /*.tgz

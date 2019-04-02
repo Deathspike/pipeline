@@ -65,9 +65,6 @@
     <Compile Include="Resources\Resource.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\app.min.js.map" />
-    <AndroidAsset Include="Assets\libs\css\material-fonts-v18.woff2" />
-    <AndroidAsset Include="Assets\libs\css\material-icons-v41.woff2" />
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -109,27 +106,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\LaunchScreen.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\libs\js\material-ui-3.2.0.min.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\libs\js\mobx-5.5.0.min.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\libs\js\mobx-react-5.2.8.min.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\libs\js\react-16.5.2.min.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\libs\js\react-dom-16.5.2.min.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\libs\css\material-fonts-v18.css" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\libs\css\material-icons-v41.css" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

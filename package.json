@@ -23,8 +23,8 @@
   },
   "scripts": {
     "bundle": "npm run -s bundle:android && npm run -s bundle:ios",
-    "bundle:android": "n-copy -d \"app/App.Platform.Android/Assets\" -s \"public\" \"app.*\" \"libs/**/*\"",
-    "bundle:ios": "n-copy -d \"app/App.Platform.iOS/Resources\" -s \"public\" \"app.*\" \"libs/**/*\"",
+    "bundle:android": "n-copy -d \"app/App.Platform.Android/Assets\" -s \"public\" \"app.*\"",
+    "bundle:ios": "n-copy -d \"app/App.Platform.iOS/Resources\" -s \"public\" \"app.*\"",
     "prepack": "tsc && webpack-cli --config webpack.prod.js && npm run -s bundle",
     "start": "n-run \"tsc --watch\" \"webpack-dev-server --config webpack.dev.js\""
   }

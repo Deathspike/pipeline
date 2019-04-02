@@ -99,9 +99,6 @@
       <SubType>Designer</SubType>
     </None>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
-    <BundleResource Include="Resources\app.min.js.map" />
-    <BundleResource Include="Resources\libs\css\material-fonts-v18.woff2" />
-    <BundleResource Include="Resources\libs\css\material-icons-v41.woff2" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -118,13 +115,6 @@
     <BundleResource Include="Resources\native\oni.patch.ios.js" />
     <BundleResource Include="Resources\native\oni.patch.js" />
     <BundleResource Include="Resources\images\LaunchScreen.png" />
-    <BundleResource Include="Resources\libs\css\material-fonts-v18.css" />
-    <BundleResource Include="Resources\libs\css\material-icons-v41.css" />
-    <BundleResource Include="Resources\libs\js\material-ui-3.2.0.min.js" />
-    <BundleResource Include="Resources\libs\js\mobx-5.5.0.min.js" />
-    <BundleResource Include="Resources\libs\js\mobx-react-5.2.8.min.js" />
-    <BundleResource Include="Resources\libs\js\react-16.5.2.min.js" />
-    <BundleResource Include="Resources\libs\js\react-dom-16.5.2.min.js" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\App.Core\App.Core.csproj">
