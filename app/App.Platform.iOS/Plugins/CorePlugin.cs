@@ -10,6 +10,7 @@ namespace App.Platform.iOS.Plugins
         public CorePlugin(ViewClient view)
         {
             Shell = new ShellPlugin(view);
+            Storage = new StoragePlugin();
         }
 
         #endregion
@@ -17,6 +18,8 @@ namespace App.Platform.iOS.Plugins
         #region Implementation of ICorePlugin
         
         public IShellPlugin Shell { get; }
+
+        public IStoragePlugin Storage { get; }
 
         #endregion
     }

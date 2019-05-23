@@ -62,6 +62,8 @@
     <Compile Include="Clients\WebClient.cs" />
     <Compile Include="Plugins\CorePlugin.cs" />
     <Compile Include="Plugins\ShellPlugin.cs" />
+    <Compile Include="Utilities\StorageContainer.cs" />
+    <Compile Include="Plugins\StoragePlugin.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
   </ItemGroup>
   <ItemGroup>

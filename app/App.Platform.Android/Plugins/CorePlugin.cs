@@ -10,6 +10,7 @@ namespace App.Platform.Android.Plugins
         public CorePlugin(Activity activity)
         {
             Shell = new ShellPlugin(activity);
+            Storage = new StoragePlugin(activity);
         }
 
         #endregion
@@ -17,6 +18,8 @@ namespace App.Platform.Android.Plugins
         #region Implementation of ICorePlugin
 
         public IShellPlugin Shell { get; }
+
+        public IStoragePlugin Storage { get; }
 
         #endregion
     }
