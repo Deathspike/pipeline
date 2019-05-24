@@ -28,6 +28,12 @@ class Builder extends React.Component {
   }
 }
 
+if (window.oni) {
+  window.oni.addEventListener('backbutton', () => {
+    window.oni!.sendAsync('shell.minimizeApp');
+  });
+}
+
 (function() {
   mobx.configure({enforceActions: 'observed'});
   ReactDOM.render(<App />, document.getElementById('container'));

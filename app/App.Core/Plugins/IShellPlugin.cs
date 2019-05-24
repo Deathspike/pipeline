@@ -3,5 +3,7 @@
     public interface IShellPlugin
     {
         void HideSplashScreen();
+
+        void MinimizeApp();
     }
 }

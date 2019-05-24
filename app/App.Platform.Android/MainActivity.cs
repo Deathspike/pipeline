@@ -45,8 +45,8 @@ namespace App.Platform.Android
 
         public override bool OnKeyDown([GeneratedEnum] Keycode keyCode, KeyEvent e)
         {
-            if (keyCode != Keycode.Back || !_webView.CanGoBack()) return base.OnKeyDown(keyCode, e);
-            _webView.GoBack();
+            if (keyCode != Keycode.Back) return base.OnKeyDown(keyCode, e);
+            _bridge.DispatchEvent("backbutton");
             return true;
         }
         

@@ -1,4 +1,5 @@
-﻿using App.Core.Plugins;
+﻿using System;
+using App.Core.Plugins;
 using App.Platform.iOS.Clients;
 
 namespace App.Platform.iOS.Plugins
@@ -21,6 +22,11 @@ namespace App.Platform.iOS.Plugins
         public void HideSplashScreen()
         {
             _view.HideSplashScreen();
+        }
+
+        public void MinimizeApp()
+        {
+            throw new NotSupportedException();
         }
 
         #endregion
