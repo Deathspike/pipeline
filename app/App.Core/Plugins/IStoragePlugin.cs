@@ -1,4 +1,4 @@
-﻿using App.Core.Models;
+﻿using App.Core.Models.Plugins;
 
 namespace App.Core.Plugins
 {
@@ -6,6 +6,6 @@ namespace App.Core.Plugins
     {
         string Get(string key);
 
-        void Set(StorageData data);
+        void Set(StorageDataModel model);
     }
 }

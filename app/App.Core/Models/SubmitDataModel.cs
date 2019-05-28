@@ -4,7 +4,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace App.Core.Models
 {
-    public sealed class SubmitData
+    public sealed class SubmitDataModel
     {
         private readonly object[] _values;
 
@@ -21,7 +21,7 @@ namespace App.Core.Models
 
         #region Constructor
 
-        public SubmitData(params object[] values)
+        public SubmitDataModel(params object[] values)
         {
             _values = values;
         }

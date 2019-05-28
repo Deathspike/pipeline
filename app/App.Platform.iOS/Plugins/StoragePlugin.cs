@@ -1,4 +1,4 @@
-﻿using App.Core.Models;
+﻿using App.Core.Models.Plugins;
 using App.Core.Plugins;
 using App.Platform.iOS.Utilities;
 
@@ -24,9 +24,9 @@ namespace App.Platform.iOS.Plugins
             return _container.Get(key);
         }
 
-        public void Set(StorageData data)
+        public void Set(StorageDataModel model)
         {
-            _container.Set(data.Key, data.Value);
+            _container.Set(model.Key, model.Value);
         }
 
         #endregion

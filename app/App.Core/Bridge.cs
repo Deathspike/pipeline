@@ -28,9 +28,9 @@ namespace App.Core
             }
         }
 
-        private object ProcessRequest(RequestData requestData)
+        private object ProcessRequest(RequestDataModel model)
         {
-            var pieces = requestData.EventName.ToLowerInvariant().Split('.').ToList();
+            var pieces = model.EventName.ToLowerInvariant().Split('.').ToList();
             var source = _corePlugin as object;
 
             while (pieces.Count > 1)
@@ -46,17 +46,17 @@ namespace App.Core
                 var mi = source.GetType().GetRuntimeMethods().FirstOrDefault(x => x.Name.ToLower() == pieces[0]);
                 if (mi == null) break;
                 var pi = mi.GetParameters();
-                return mi.Invoke(source, pi.Length != 0 ? new[] {requestData.Value.ToObject(pi[0].ParameterType)} : null);
+                return mi.Invoke(source, pi.Length != 0 ? new[] {model.Value.ToObject(pi[0].ParameterType)} : null);
             }
 
-            throw new Exception($"Unknown event name: {requestData.EventName}");
+            throw new Exception($"Unknown event name: {model.EventName}");
         }
 
-        private void ProcessResponse(RequestData requestData, object response)
+        private void ProcessResponse(RequestDataModel model, object response)
         {
             if (!(response is Task task))
             {
-                _client.Submit(requestData.CallbackName, new SubmitData(true, response));
+                _client.Submit(model.CallbackName, new SubmitDataModel(true, response));
                 return;
             }
 
@@ -64,19 +64,19 @@ namespace App.Core
             {
                 if (x.IsFaulted)
                 {
-                    _client.Submit(requestData.CallbackName, new SubmitData(false, string.Join(
+                    _client.Submit(model.CallbackName, new SubmitDataModel(false, string.Join(
                         Environment.NewLine,
                         x.Exception.InnerExceptions.Select(y => y.Message))));
                 }
                 else if (x.GetType().IsConstructedGenericType)
                 {
-                    _client.Submit(requestData.CallbackName, new SubmitData(true, x.GetType()
+                    _client.Submit(model.CallbackName, new SubmitDataModel(true, x.GetType()
                         .GetRuntimeProperty(nameof(Task<object>.Result))
                         .GetValue(x)));
                 }
                 else
                 {
-                    _client.Submit(requestData.CallbackName, new SubmitData(true));
+                    _client.Submit(model.CallbackName, new SubmitDataModel(true));
                 }
             });
         }
@@ -100,7 +100,7 @@ namespace App.Core
         {
             if (_isActive)
             {
-                _client.Submit("oni.dispatchEvent", new SubmitData(eventName, value));
+                _client.Submit("oni.dispatchEvent", new SubmitDataModel(eventName, value));
             }
             else
             {
@@ -110,20 +110,20 @@ namespace App.Core
 
         public void ProcessRequest(string json)
         {
-            var requestData = JsonConvert.DeserializeObject<RequestData>(json);
+            var model = JsonConvert.DeserializeObject<RequestDataModel>(json);
             var response = null as object;
 
             try
             {
-                response = ProcessRequest(requestData);
+                response = ProcessRequest(model);
             }
             catch (Exception ex)
             {
-                _client.Submit(requestData.CallbackName, new SubmitData(false, ex.Message));
+                _client.Submit(model.CallbackName, new SubmitDataModel(false, ex.Message));
             }
             finally
             {
-                ProcessResponse(requestData, response);
+                ProcessResponse(model, response);
             }
         }
 

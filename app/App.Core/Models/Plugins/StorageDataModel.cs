@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace App.Core.Models
+namespace App.Core.Models.Plugins
 {
-    public sealed class StorageData
+    public sealed class StorageDataModel
     {
         [JsonProperty]
         public string Key { get; set; }

@@ -39,10 +39,10 @@
     <Compile Include="Plugins\IShellPlugin.cs" />
     <Compile Include="Plugins\ICorePlugin.cs" />
     <Compile Include="Interfaces\IClient.cs" />
-    <Compile Include="Models\RequestData.cs" />
-    <Compile Include="Models\SubmitData.cs" />
+    <Compile Include="Models\RequestDataModel.cs" />
+    <Compile Include="Models\SubmitDataModel.cs" />
     <Compile Include="Plugins\IStoragePlugin.cs" />
-    <Compile Include="Models\StorageData.cs" />
+    <Compile Include="Models\Plugins\StorageDataModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

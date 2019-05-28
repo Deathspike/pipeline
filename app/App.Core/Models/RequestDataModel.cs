@@ -3,7 +3,7 @@ using Newtonsoft.Json.Linq;
 
 namespace App.Core.Models
 {
-    public sealed class RequestData
+    public sealed class RequestDataModel
     {
         [JsonProperty]
         public string CallbackName { get; set; }

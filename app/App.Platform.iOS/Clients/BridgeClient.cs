@@ -19,9 +19,9 @@ namespace App.Platform.iOS.Clients
 
         #region Implementation of IClient
 
-        public void Submit(string functionName, SubmitData submitData)
+        public void Submit(string functionName, SubmitDataModel model)
         {
-            _webView.EvaluateJavaScript($"{functionName}({submitData.InvokeData});", null);
+            _webView.EvaluateJavaScript($"{functionName}({model.InvokeData});", null);
         }
 
         #endregion

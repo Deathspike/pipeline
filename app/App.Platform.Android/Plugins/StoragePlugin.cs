@@ -1,5 +1,5 @@
 ﻿using Android.Content;
-using App.Core.Models;
+using App.Core.Models.Plugins;
 using App.Core.Plugins;
 using App.Platform.Android.Utilities;
 
@@ -25,9 +25,9 @@ namespace App.Platform.Android.Plugins
             return _container.Get(key);
         }
 
-        public void Set(StorageData data)
+        public void Set(StorageDataModel model)
         {
-            _container.Set(data.Key, data.Value);
+            _container.Set(model.Key, model.Value);
         }
 
         #endregion
