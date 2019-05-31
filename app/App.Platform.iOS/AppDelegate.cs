@@ -34,7 +34,6 @@ namespace App.Platform.iOS
 
             // Initialize the content configuration.
             contentMessageHandler.UseBridge(_bridge);
-            webView.ScrollView.Bounces = false;
             webView.ScrollView.ContentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.Never;
             webView.ScrollView.ShowsHorizontalScrollIndicator = false;
             webView.ScrollView.ShowsVerticalScrollIndicator = false;
