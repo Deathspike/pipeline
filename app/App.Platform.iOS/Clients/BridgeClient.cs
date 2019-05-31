@@ -21,7 +21,10 @@ namespace App.Platform.iOS.Clients
 
         public void Submit(string functionName, SubmitDataModel model)
         {
-            _webView.EvaluateJavaScript($"{functionName}({model.InvokeData});", null);
+            _webView.InvokeOnMainThread(() =>
+            {
+                _webView.EvaluateJavaScript($"{functionName}({model.InvokeData});", null);
+            });
         }
 
         #endregion

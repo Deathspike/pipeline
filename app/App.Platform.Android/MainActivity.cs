@@ -10,9 +10,6 @@ using App.Platform.Android.Plugins;
 
 namespace App.Platform.Android
 {
-    // TODO: Handle logs and errors.
-    // TODO: Check if navigation error also arrives in OnConsoleMessage (error is a console message?).
-    // TODO: Scaling issues.
     [Activity(Label = "@string/app_name", LaunchMode = LaunchMode.SingleInstance, MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.NoTitleBar")]
     public sealed class MainActivity : Activity
     {

@@ -7,7 +7,6 @@ using WebKit;
 
 namespace App.Platform.iOS
 {
-    // TODO: Handle logs and errors.
     [Register("AppDelegate")]
     public sealed class AppDelegate : UIApplicationDelegate
     {
