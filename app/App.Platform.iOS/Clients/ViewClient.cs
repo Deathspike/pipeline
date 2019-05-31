@@ -24,10 +24,9 @@ namespace App.Platform.iOS.Clients
 
         public void HideSplashScreen()
         {
-            if (View.Subviews.Length != 2) return;
             _statusBarStyle = UIStatusBarStyle.LightContent;
+            _webView.Hidden = false;
             SetNeedsStatusBarAppearanceUpdate();
-            View.Subviews[1].RemoveFromSuperview();
         }
 
         #endregion
@@ -42,9 +41,11 @@ namespace App.Platform.iOS.Clients
         public override void ViewDidAppear(bool animated)
         {
             var fileUrl = new NSUrl(NSBundle.MainBundle.PathForResource("index", "html"), false);
+            _webView.Hidden = true;
             _webView.NavigationDelegate = this;
             _webView.UIDelegate = this;
             _webView.LoadFileUrl(fileUrl, fileUrl);
+            View.AddSubview(_webView);
         }
 
         #endregion

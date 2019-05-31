@@ -45,8 +45,7 @@ namespace App.Platform.iOS
 
             // Initialize the window.
             Window = new UIWindow(bounds) {RootViewController = view};
-            Window.RootViewController.View = webView;
-            Window.RootViewController.View.AddSubview(launchView);
+            Window.RootViewController.View = launchView;
             Window.MakeKeyAndVisible();
             return true;
         }
