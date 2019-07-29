@@ -8,6 +8,7 @@ namespace App.Platform.iOS.Clients
     public sealed class ViewClient : UIViewController, IWKNavigationDelegate, IWKUIDelegate
     {
         private readonly WKWebView _webView;
+        private bool _hasAppeared;
         private UIStatusBarStyle _statusBarStyle;
 
         #region Constructor
@@ -40,7 +41,9 @@ namespace App.Platform.iOS.Clients
 
         public override void ViewDidAppear(bool animated)
         {
+            if (_hasAppeared) return;
             var fileUrl = new NSUrl(NSBundle.MainBundle.PathForResource("index", "html"), false);
+            _hasAppeared = true;
             _webView.Hidden = true;
             _webView.NavigationDelegate = this;
             _webView.UIDelegate = this;
