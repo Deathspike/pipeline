@@ -1,6 +1,6 @@
 import * as mobx from 'mobx';
 
-export class CounterViewModel {
+export class MainViewModel {
   @mobx.action
   decrement() {
     this.value--;
