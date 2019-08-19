@@ -1,4 +1,4 @@
-import * as app from '.';
+import * as areas from './areas';
 import * as mobx from 'mobx';
 import * as mobxReact from 'mobx-react';
 import * as mui from '@material-ui/core';
@@ -9,7 +9,7 @@ import * as ReactDOM from 'react-dom';
 class App extends React.Component {
   render() {
     return (
-      <mui.MuiThemeProvider theme={app.theme}>
+      <mui.MuiThemeProvider theme={areas.shared.theme}>
         <mui.CssBaseline />
         <Builder />
       </mui.MuiThemeProvider>
@@ -20,11 +20,7 @@ class App extends React.Component {
 @mobxReact.observer
 class Builder extends React.Component {
   render() {
-    return (
-      <app.HeaderComponent title={document.title}>
-        <app.CounterView vm={new app.CounterViewModel()} />
-      </app.HeaderComponent>
-    );
+    return <areas.counter.MainController />;
   }
 }
 
