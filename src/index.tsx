@@ -33,5 +33,5 @@ if (window.oni) {
 (function() {
   mobx.configure({enforceActions: 'observed'});
   ReactDOM.render(<App />, document.getElementById('container'));
-  setTimeout(() => window.oni ? window.oni.sendAsync('shell.hideSplashScreen') : null, 1000);
+  setTimeout(() => window.oni && window.oni.sendAsync('shell.hideSplashScreen'), 1000);
 })();
