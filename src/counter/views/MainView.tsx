@@ -31,16 +31,16 @@ export class MainView extends React.Component<{vm: app.MainViewModel}> {
 
 const styles = app.styles({
   textContainer: {
-    padding: app.theme.spacing.unit 
+    padding: app.theme.spacing() 
   },
   buttonContainer: {
-    marginTop: app.theme.spacing.unit,
+    marginTop: app.theme.spacing(),
     textAlign: 'center'
   },
   button: {
-    marginRight: app.theme.spacing.unit
+    marginRight: app.theme.spacing()
   },
   buttonIcon: {
-    marginRight: app.theme.spacing.unit
+    marginRight: app.theme.spacing()
   }
 });
