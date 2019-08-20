@@ -1,20 +1,12 @@
 {
   "version": "2.0.0",
   "tasks": [{
-    "args": ["start"],
-    "command": "npm",
-    "group": {"kind": "build", "isDefault": true},
+    "group": {"isDefault": true, "kind": "build"},
     "isBackground": true,
-    "label": "Install & Serve",
-    "type": "shell",
-    "problemMatcher": {
-      "owner": "custom",
-      "pattern": {"regexp": "_"},
-      "background": {
-        "activeOnStart": false,
-        "beginsPattern": "^> Executing task:",
-        "endsPattern": "^i ｢wds｣: Project is running"
-      }
-    }
+    "label": "TypeScript",
+    "option": "watch",
+    "problemMatcher": ["$tsc-watch"],
+    "tsconfig": "tsconfig.json",
+    "type": "typescript"
   }]
 }

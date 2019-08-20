@@ -10,8 +10,9 @@ Single-page application powered by `mobx`, `react` and `typescript`, transpiled 
 
 ## Debugging
 
-1. Open this folder with `Visual Studio Code` and press `F5`.
-2. Wait for the `Chrome` to appear and start debugging.
+1. Open this folder with `Visual Studio Code`.
+2. Run `npm test` in the `Terminal` to start the development server.
+3. Press `F5` and wait for `Chrome` to appear and start debugging.
 
 ## Publishing
 
