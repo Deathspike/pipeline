@@ -11,16 +11,20 @@ class App extends React.Component {
     return (
       <mui.MuiThemeProvider theme={areas.shared.theme}>
         <mui.CssBaseline />
-        <Builder />
+        <areas.shared.DialogManagerView />
+        <areas.shared.ScreenManagerView />
       </mui.MuiThemeProvider>
     );
   }
 }
 
 @mobxReact.observer
-class Builder extends React.Component {
+class Root extends React.Component {
   render() {
-    return <areas.counter.MainController />;
+    switch (areas.shared.core.screen.rootType) {
+      case areas.shared.RootType.Counter:
+        return <areas.counter.MainController />;
+    }
   }
 }
 
@@ -31,6 +35,7 @@ if (window.oni) {
 }
 
 (function() {
+  areas.shared.core.screen.open(Root);
   mobx.configure({enforceActions: 'observed'});
   ReactDOM.render(<App />, document.getElementById('container'));
   setTimeout(() => window.oni && window.oni.sendAsync('shell.hideSplashScreen'), 1000);
