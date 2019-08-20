@@ -23,7 +23,6 @@
   "scripts": {
     "prepack": "webpack-cli --config webpack.prod.js",
     "prepare": "tsc",
-    "start": "node .",
     "test": "webpack-dev-server --config webpack.dev.js"
   }
 }
