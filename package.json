@@ -27,7 +27,6 @@
     "bundle:ios": "n-copy -d \"app/App.Platform.iOS/Resources\" -s \"public\" \"app.*\"",
     "prepack": "webpack-cli --config webpack.prod.js && npm run -s bundle",
     "prepare": "tsc",
-    "start": "node .",
     "test": "webpack-dev-server --config webpack.dev.js"
   }
 }
