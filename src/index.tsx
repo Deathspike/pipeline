@@ -1,5 +1,4 @@
 import * as areas from './areas';
-import * as mobx from 'mobx';
 import * as mobxReact from 'mobx-react';
 import * as mui from '@material-ui/core';
 import * as React from 'react';
@@ -30,6 +29,5 @@ class Root extends React.Component {
 
 (function() {
   areas.shared.core.screen.open(Root);
-  mobx.configure({enforceActions: 'observed'});
   ReactDOM.render(<App />, document.getElementById('container'));
 })();
