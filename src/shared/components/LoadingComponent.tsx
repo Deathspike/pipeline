@@ -5,7 +5,8 @@ import * as React from 'react';
 export class LoadingComponent extends React.Component<{open: boolean}> {
   state = {
     open: false,
-    timeoutHandle: undefined
+    timeoutHandle: undefined,
+    showInitial: true
   };
 
   componentWillMount() {
@@ -13,7 +14,10 @@ export class LoadingComponent extends React.Component<{open: boolean}> {
   }
 
   componentWillReceiveProps(props: {open: boolean}) {
-    if (props.open) {
+    if (this.state.showInitial) {
+      this.componentWillUnmount();
+      this.setState({open: true, showInitial: false});
+    } else if (props.open) {
       this.componentWillUnmount();
       this.setState({timeoutHandle: setTimeout(() => this.setState({open: props.open}), app.settings.loadingMinimumTimeout)});
     } else {
@@ -42,12 +46,12 @@ export class LoadingComponent extends React.Component<{open: boolean}> {
 
 const styles = app.styles({
   disabler: {
-    zIndex: 2000,
     bottom: 0,
     left: 0,
     right: 0,
     position: 'fixed',
-    top: 0
+    top: 0,
+    zIndex: 2000
   },
   container: {
     outline: 0
