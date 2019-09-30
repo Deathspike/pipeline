@@ -5,6 +5,5 @@ export * from './common/styles';
 export * from './common/theme';
 export * from './components/HeaderComponent';
 export * from './components/LoadingComponent';
-export * from './enumerators/RootType';
 export * from './views/DialogManagerView';
 export * from './views/ScreenManagerView';
