@@ -66,16 +66,17 @@ export class ScreenManager {
   }[];
 
   private async _replaceAsync(constructAsync: (restoreState?: any) => Promise<React.ReactElement>, preserveState?: any, restoreState?: any, restoreX?: number, restoreY?: number) {
+    // Initialize the restore state.
+    const previous = this.views.length >= 2 && this.views[this.views.length - 2];
+    if (previous) previous.restoreState = preserveState;
+    if (previous) previous.restoreX = scrollX;
+    if (previous) previous.restoreY = scrollY;
+
+    // Initialize the screen.
     await this.loadAsync(async () => {
       const element = await constructAsync(restoreState);
       const elementView = this.views.length >= 1 && this.views[this.views.length - 1];
-      const previous = this.views.length >= 2 && this.views[this.views.length - 2];
-      if (elementView && elementView.constructAsync === constructAsync) {
-        if (previous) previous.restoreState = preserveState;
-        if (previous) previous.restoreX = scrollX;
-        if (previous) previous.restoreY = scrollY;
-        this.presentView = {element, x: restoreX, y: restoreY};
-      }
+      if (elementView && elementView.constructAsync === constructAsync) this.presentView = {element, x: restoreX, y: restoreY};
     });
   }
 }
