@@ -1,9 +1,17 @@
-import {DialogManager} from './managers/DialogManager';
-import {RouteManager} from './managers/RouteManager';
-import {ScreenManager} from './managers/ScreenManager';
+import * as app from '.';
+let cacheDialog: app.DialogManager;
+let cacheScreen: app.ScreenManager;
 
 export const core = {
-  dialog: new DialogManager(),
-  route: new RouteManager(),
-  screen: new ScreenManager()
+  get dialog() {
+    if (cacheDialog) return cacheDialog;
+    cacheDialog = new app.DialogManager();
+    return cacheDialog;
+  },
+
+  get screen() {
+    if (cacheScreen) return cacheScreen;
+    cacheScreen = new app.ScreenManager();
+    return cacheScreen;
+  }
 };
