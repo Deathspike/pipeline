@@ -44,11 +44,11 @@ namespace App.Platform.Android
 		public partial class Drawable
 		{
 			
-			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			// aapt resource value: 0x7F010000
+			public const int Icon = 2130771968;
 			
-			// aapt resource value: 0x7f020001
-			public const int LaunchScreen = 2130837505;
+			// aapt resource value: 0x7F010001
+			public const int LaunchScreen = 2130771969;
 			
 			static Drawable()
 			{
@@ -63,11 +63,11 @@ namespace App.Platform.Android
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050001
-			public const int splashScreen = 2131034113;
+			// aapt resource value: 0x7F020000
+			public const int splashScreen = 2130837504;
 			
-			// aapt resource value: 0x7f050000
-			public const int webView = 2131034112;
+			// aapt resource value: 0x7F020001
+			public const int webView = 2130837505;
 			
 			static Id()
 			{
@@ -82,7 +82,7 @@ namespace App.Platform.Android
 		public partial class Layout
 		{
 			
-			// aapt resource value: 0x7f030000
+			// aapt resource value: 0x7F030000
 			public const int Main = 2130903040;
 			
 			static Layout()
@@ -98,7 +98,7 @@ namespace App.Platform.Android
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040000
+			// aapt resource value: 0x7F040000
 			public const int app_name = 2130968576;
 			
 			static String()
