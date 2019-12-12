@@ -23,7 +23,7 @@ namespace App.Platform.iOS.Clients
         {
             var body = message.Body.ToString();
             var text = body.Substring(2);
-            if (text.StartsWith("oni:")) _bridge?.ProcessRequest(text.Substring(4));
+            if (text.StartsWith("oni:")) _bridge.ProcessRequest(text.Substring(4));
             else Console.WriteLine(body);
         }
 

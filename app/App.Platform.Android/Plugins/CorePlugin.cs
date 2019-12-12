@@ -18,7 +18,6 @@ namespace App.Platform.Android.Plugins
         #region Implementation of ICorePlugin
 
         public IShellPlugin Shell { get; }
-
         public IStoragePlugin Storage { get; }
 
         #endregion
