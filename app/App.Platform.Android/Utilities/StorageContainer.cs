@@ -1,17 +1,18 @@
-﻿using System;
-using Android.Content;
+﻿using Android.Content;
 
 namespace App.Platform.Android.Utilities
 {
-    public sealed class StorageContainer : IDisposable
+    public sealed class StorageContainer
     {
-        private readonly ISharedPreferences _sharedPreferences;
+        private readonly Context _context;
+        private readonly string _name;
 
         #region Constructor
 
         public StorageContainer(Context context, string name)
         {
-            _sharedPreferences = context.GetSharedPreferences(name, FileCreationMode.Private);
+            _context = context;
+            _name = name;
         }
 
         #endregion
@@ -20,28 +21,25 @@ namespace App.Platform.Android.Utilities
 
         public string Get(string key)
         {
-            return _sharedPreferences.GetString(key, string.Empty);
+            using (var preferences = _context.GetSharedPreferences(_name, FileCreationMode.Private))
+            {
+                return preferences.GetString(key, string.Empty);
+            }
         }
 
         public void Set(string key, string value)
         {
-            if (string.IsNullOrEmpty(value))
+            using (var preferences = _context.GetSharedPreferences(_name, FileCreationMode.Private))
             {
-                _sharedPreferences.Edit().Remove(key).Commit();
+                if (string.IsNullOrEmpty(value))
+                {
+                    preferences.Edit().Remove(key).Commit();
+                }
+                else
+                {
+                    preferences.Edit().PutString(key, value).Commit();
+                }
             }
-            else
-            {
-                _sharedPreferences.Edit().PutString(key, value).Commit();
-            }
-        }
-
-        #endregion
-
-        #region Implementation of IDisposable
-
-        public void Dispose()
-        {
-            _sharedPreferences.Dispose();
         }
 
         #endregion
