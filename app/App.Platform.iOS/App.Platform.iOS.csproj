@@ -120,12 +120,6 @@
     <BundleResource Include="Resources\images\LaunchScreen.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\App.Core\App.Core.csproj">
-      <Project>{9e63bb6b-5962-41fc-872b-c9fd1cb13c7b}</Project>
-      <Name>App.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +168,12 @@
     <ImageAsset Include="Media.xcassets\LaunchImages.launchimage\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\App.Core\App.Core.csproj">
+      <Project>{507578d8-50d9-4b8a-abb1-b54bd2ded1eb}</Project>
+      <Name>App.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
