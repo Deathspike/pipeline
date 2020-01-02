@@ -4,15 +4,15 @@ import * as mui from '@material-ui/core';
 import * as React from 'react';
 
 @mobxReact.observer
-export class DialogManagerView extends React.Component {
+export class DialogManagerView extends app.BaseComponent<typeof DialogManagerViewStyles> {
   render() {
     return app.core.dialog.items.map((item, index) => (
-      <mui.Dialog key={item.id} fullWidth maxWidth={false} open={index === app.core.dialog.items.length - 1} style={styles.container}>
-        <mui.DialogContent style={styles.content}>
+      <mui.Dialog key={item.id} fullWidth maxWidth={false} open={index === app.core.dialog.items.length - 1} className={this.classes.container}>
+        <mui.DialogContent className={this.classes.content}>
           <mui.DialogContentText>
             {item.body}
           </mui.DialogContentText>
-          {Boolean(item.errorTexts.length) && <pre style={styles.error}>
+          {Boolean(item.errorTexts.length) && <pre className={this.classes.error}>
             {item.errorTexts.map((errorText) => <text>{errorText}</text>)}
           </pre>}
         </mui.DialogContent>
@@ -28,7 +28,7 @@ export class DialogManagerView extends React.Component {
   }
 }
 
-const styles = app.styles({
+export const DialogManagerViewStyles = mui.createStyles({
   container: {
     zIndex: 2100
   },
