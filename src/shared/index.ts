@@ -10,4 +10,3 @@ export * from './managers/DialogManager';
 export * from './managers/ScreenManager';
 export * from './views/DialogManagerView';
 export * from './views/ScreenManagerView';
-module.exports.patchStyles(module.exports);

@@ -18,6 +18,7 @@ class App extends React.Component {
 }
 
 (function() {
+  areas.shared.connectStyles(areas);
   areas.shared.core.screen.openAsync(areas.counter.MainController.constructAsync);
   ReactDOM.render(<App />, document.getElementById('container'));
 })();
