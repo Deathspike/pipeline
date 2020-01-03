@@ -51,7 +51,7 @@ export const LoadingComponentStyles = mui.createStyles({
     right: 0,
     position: 'fixed',
     top: 0,
-    zIndex: 2000
+    zIndex: 1250
   },
   container: {
     outline: 0

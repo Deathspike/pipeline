@@ -7,7 +7,7 @@ import * as React from 'react';
 export class DialogManagerView extends app.BaseComponent<typeof DialogManagerViewStyles> {
   render() {
     return app.core.dialog.items.map((item, index) => (
-      <mui.Dialog key={item.id} fullWidth maxWidth={false} open={index === app.core.dialog.items.length - 1} className={this.classes.container}>
+      <mui.Dialog key={item.id} fullWidth maxWidth={false} open={index === app.core.dialog.items.length - 1}>
         <mui.DialogContent className={this.classes.content}>
           <mui.DialogContentText>
             {item.body}
@@ -29,9 +29,6 @@ export class DialogManagerView extends app.BaseComponent<typeof DialogManagerVie
 }
 
 export const DialogManagerViewStyles = mui.createStyles({
-  container: {
-    zIndex: 2100
-  },
   content: {
     paddingTop: 24
   },
