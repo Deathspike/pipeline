@@ -24,6 +24,7 @@ if (window.oni) {
 }
 
 (function() {
+  areas.shared.connectStyles(areas);
   areas.shared.core.screen.openAsync(areas.counter.MainController.constructAsync);
   ReactDOM.render(<App />, document.getElementById('container'));
   setTimeout(() => window.oni && window.oni.sendAsync('shell.hideSplashScreen'), 1000);
