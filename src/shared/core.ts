@@ -1,17 +1,17 @@
 import * as app from '.';
-let cacheDialog: app.DialogManager;
-let cacheScreen: app.ScreenManager;
+let dialog: app.DialogManager;
+let screen: app.ScreenManager;
 
 export const core = {
   get dialog() {
-    if (cacheDialog) return cacheDialog;
-    cacheDialog = new app.DialogManager();
-    return cacheDialog;
+    if (dialog) return dialog;
+    dialog = new app.DialogManager();
+    return dialog;
   },
 
   get screen() {
-    if (cacheScreen) return cacheScreen;
-    cacheScreen = new app.ScreenManager();
-    return cacheScreen;
+    if (screen) return screen;
+    screen = new app.ScreenManager();
+    return screen;
   }
 };
