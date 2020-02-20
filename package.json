@@ -1,6 +1,5 @@
 {
   "name": "project-sunfish",
-  "main": "src",
   "private": true,
   "version": "0.1.0",
   "devDependencies": {

@@ -42,10 +42,10 @@ export class ScreenManager {
   }
 
   @mobx.action
-  async replaceChildAsync(constructAsync: () => Promise<React.ReactElement>, restoreState?: any) {
+  async replaceChildAsync(constructAsync: () => Promise<React.ReactElement>) {
     this.views.pop();
     this.views.push({constructAsync});
-    await this._replaceAsync(constructAsync, restoreState);
+    await this._replaceAsync(constructAsync);
   }
 
   @mobx.observable
