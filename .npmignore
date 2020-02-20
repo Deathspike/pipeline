@@ -3,6 +3,6 @@
 /dist/*
 /src/*
 /typings/*
-/*.js
+/webpack.*
 /*.json
 /*.tgz
