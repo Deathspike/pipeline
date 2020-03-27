@@ -15,7 +15,6 @@ namespace App.Core
         private readonly IClient _client;
         private readonly ICorePlugin _corePlugin;
         private readonly List<KeyValuePair<string, object>> _queue;
-        private bool _isActive;
 
         #region Abstracts
 
@@ -98,7 +97,7 @@ namespace App.Core
 
         public void DispatchEvent(string eventName, object value = null)
         {
-            if (_isActive)
+            if (IsActive)
             {
                 _client.Submit("oni.dispatchEvent", new SubmitDataModel(eventName, value));
             }
@@ -131,16 +130,22 @@ namespace App.Core
         {
             if (isActive)
             {
-                _isActive = true;
+                IsActive = true;
                 EmptyQueue();
                 DispatchEvent("focus");
             }
             else
             {
                 DispatchEvent("blur");
-                _isActive = false;
+                IsActive = false;
             }
         }
+
+        #endregion
+
+        #region Properties
+
+        public bool IsActive { get; private set; }
 
         #endregion
     }
